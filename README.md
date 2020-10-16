@@ -7,3 +7,4 @@ Terraform All concept:
    b. Provider
    c. Block
    d. environment variable setup
+   e. Let's create a VPC with 4 subnet
