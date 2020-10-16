@@ -1,4 +1,4 @@
 #adding the provider
-provider "vpc"{
+provider "aws"{
     region      = "us-east-2"
 }
