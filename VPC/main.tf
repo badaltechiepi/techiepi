@@ -10,7 +10,7 @@ resource "aws_vpc" "myvpc" {
 
 resource "aws_subnet" "web"{
   cidr_block    = cidrsubnet(var.cidr_block, 8, 0)
-  vpc_id        = var.vpc_id
+  vpc_id        = "aws_vpc.myvpc.id"
   availability_zone       = format("%sa", var.region)
   tags = {
   Name          = var.tagname[1]
@@ -21,7 +21,7 @@ resource "aws_subnet" "web"{
 
 resource "aws_subnet" "app"{
   cidr_block    = cidrsubnet(var.cidr_block, 8, 1)
-  vpc_id        = var.vpc_id
+  vpc_id        = "aws_vpc.myvpc.id"
   availability_zone       = format("%sb", var.region)
   tags = {
   Name          = var.tagname[2]
@@ -32,7 +32,7 @@ resource "aws_subnet" "app"{
 
 resource "aws_subnet" "db"{
   cidr_block    = cidrsubnet(var.cidr_block, 8, 2)
-  vpc_id        = var.vpc_id
+  vpc_id        = "aws_vpc.myvpc.id"
   availability_zone       = format("%sc", var.region)
   
   tags = {
@@ -44,7 +44,7 @@ resource "aws_subnet" "db"{
 
 resource "aws_subnet" "mgmt"{
   cidr_block    = cidrsubnet(var.cidr_block, 8, 3)
-  vpc_id        = var.vpc_id
+  vpc_id        = "aws_vpc.myvpc.id"
   availability_zone       = format("%sa", var.region)
   tags = {
   Name          = var.tagname[4]
