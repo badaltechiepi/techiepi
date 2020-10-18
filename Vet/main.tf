@@ -1,6 +1,6 @@
 resource "azurerm_resource_group" "ntire"{
 
-    name = "ntire"
+    name = var.rs_name
     location = var.location
     tags            = {
         Purpose     = "Learning",
@@ -12,8 +12,8 @@ resource "azurerm_resource_group" "ntire"{
 resource azurerm_virtual_network ntire_vnet{
 
     name = "firstvnet"
-    resource_group_name = azurerm_resource_group.ntire 
-    address_space = var.addressspace
+    resource_group_name = var.rs_name
+    address_space = var.adspace
     location = var.location
     tags            = {
         Purpose     = "Learning",
