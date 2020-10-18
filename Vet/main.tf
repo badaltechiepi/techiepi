@@ -1,4 +1,4 @@
-resource "azurerm_resource_group" "ntire"{
+resource "azurerm_resource_group" "ntire1"{
 
     name = var.rs_name
     location = var.location
@@ -9,9 +9,9 @@ resource "azurerm_resource_group" "ntire"{
 
 }
 
-resource "azurerm_virtual_network" "nvnet"{
+resource "azurerm_virtual_network" "nvnet1"{
 
-    name = "firstvnet"
+    name = "firstvnet1"
     resource_group_name = var.rs_name
     address_space = [var.adspace]
     location = var.location
