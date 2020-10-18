@@ -11,7 +11,7 @@ resource "azurerm_resource_group" "ntire1"{
 
 resource "azurerm_virtual_network" "nvnet1"{
 
-    name                = "firstvnet1"
+    name                = "vnetfirst"
     resource_group_name = var.rs_name
     address_space       = [var.adspace]
     location            = var.location
