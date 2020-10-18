@@ -10,13 +10,12 @@ resource "azurerm_resource_group" "ntire1"{
 }
 
 resource "azurerm_virtual_network" "nvnet1"{
-
+    
+    count               =  length(var.subenet_name)
     name                = "vnetfirst"
     resource_group_name = var.rs_name
     address_space       = [var.adspace]
     location            = var.location
-    #for loop for terraform(current iteratoin)
-    count               =  length(var.subenet_name) 
     subnet{
         #index need to 0,1,2,3
         name            = var.subenet_name[count.index] 
