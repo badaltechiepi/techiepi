@@ -17,3 +17,10 @@ variable adspace {
   default     = "192.168.0.0/16"
   description = "this is the address space"
 }
+
+variable subenet_name {
+  type        = list(string)
+  default     = ["web","app","db","mgmt"]
+  description = "subenet name"
+}
+
