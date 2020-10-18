@@ -20,6 +20,8 @@ resource "azurerm_virtual_network" "nvnet1"{
         CreatedBy   = "Terraform"
     }
 
-
+depends_on = [
+    azurerm_resource_group.ntire1
+  ]
 
 }
