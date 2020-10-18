@@ -34,10 +34,9 @@ resource "azurerm_virtual_network" "nvnet1"{
     }
 
 
-    tags            = {
-        Purpose     = "Learning",
-        CreatedBy   = "Terraform"
-    }
+    tags = {
+    environment = "Production"
+  }
 
 depends_on = [
     azurerm_resource_group.ntire1
