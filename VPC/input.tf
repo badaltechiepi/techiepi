@@ -5,6 +5,13 @@ variable "region" {
   description = "region"
 }
 
+variable vpcname {
+  type        = string
+  default     = "myfirstc"
+  description = "this is my first vpc"
+}
+
+
 #this variable define the cidr_block(ip range)
 variable cidr_block {
   type        = string
@@ -15,7 +22,7 @@ variable cidr_block {
 #tag name
 variable tagname {
   type        = list(string)
-  default     = ["myfistvpc","web","app","db","mgmt"]
+  default     = ["web","app","db","mgmt"]
   description = "tag names"
 }
 
