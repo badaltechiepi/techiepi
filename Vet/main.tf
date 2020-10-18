@@ -9,7 +9,7 @@ resource "azurerm_resource_group" "ntire"{
 
 }
 
-resource "azurerm_virtual_network" "ntire_vnet"{
+resource "azurerm_virtual_network" "nvnet"{
 
     name = "firstvnet"
     resource_group_name = var.rs_name
