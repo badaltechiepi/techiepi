@@ -14,7 +14,7 @@ variable location {
 
 variable adspace {
   type        = string
-  default     = "192.168.0.0/16"
+  default     = "10.10.0.0/16"
   description = "this is the address space"
 }
 
