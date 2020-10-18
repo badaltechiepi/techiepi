@@ -8,7 +8,7 @@ variable rs_name {
 
 variable location {
   type        = string
-  default     = "East US 2"
+  default     = "EastUS"
   description = "location to create the vnet"
 }
 
@@ -20,7 +20,7 @@ variable adspace {
 
 variable subenet_name {
   type        = list(string)
-  default     = ["web","app","db","mgmt"]
+  default     = ["web", "app", "db", "mgmt"]
   description = "subenet name"
 }
 
