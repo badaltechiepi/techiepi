@@ -12,13 +12,6 @@ variable cidr_block {
   description = "cidr_block value"
 }
 
-#thid variable defind to get the vpc id(attribute)
-variable vpc_id {
-  type        = string
-  default     = "aws_vpc.myvpc.id"
-  description = "vpc id"
-}
-
 #tag name
 variable tagname {
   type        = list(string)
