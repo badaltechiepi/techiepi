@@ -9,11 +9,11 @@ resource "azurerm_resource_group" "ntire"{
 
 }
 
-resource azurerm_virtual_network ntire_vnet{
+resource "azurerm_virtual_network" "ntire_vnet"{
 
     name = "firstvnet"
     resource_group_name = var.rs_name
-    address_space = var.adspace
+    address_space = [var.adspace]
     location = var.location
     tags            = {
         Purpose     = "Learning",
