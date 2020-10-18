@@ -1,6 +1,6 @@
 variable rs_name {
   type        = string
-  default     = "ntire"
+  default     = "newrs"
   description = "description"
 }
 
