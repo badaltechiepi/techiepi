@@ -15,10 +15,12 @@ resource "azurerm_virtual_network" "nvnet1"{
     resource_group_name = var.rs_name
     address_space       = [var.adspace]
     location            = var.location
-    count               =  length(var.subenet_name) #for loop for terraform(current iteratoin)
+    #for loop for terraform(current iteratoin)
+    count               =  length(var.subenet_name) 
     subnet{
-        name            = var.subenet_name[count.index] #index need to 0,1,2,3
-        address_prefix  = cidrsubnet(var.adspace, 8, count.index) #index need to 0,1,2,3
+        #index need to 0,1,2,3
+        name            = var.subenet_name[count.index] 
+        address_prefix  = cidrsubnet(var.adspace, 8, count.index) 
     }
 
     tags                = {
