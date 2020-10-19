@@ -22,7 +22,7 @@ data "aws_vpc" "selected" {
 
 resource "aws_subnet" "extra"{
 
-    vpc_id = data.aws_vpc.selected.cidr_block
+    vpc_id = data.aws_vpc.selected.id
     cidr_block        = cidrsubnet(data.aws_vpc.selected.cidr_block, 8, 4)
     tags = {
     Name = "extra"
