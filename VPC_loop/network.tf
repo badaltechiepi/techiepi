@@ -15,7 +15,7 @@ resource "aws_subnet" "mysubnet"{
 }
 #data source example
 data "aws_vpc" "selected" {
-   id = vpc-04e4856a75a41e1b0
+   id = "vpc-04e4856a75a41e1b0"
 }
 
 #creating a extra subnet
