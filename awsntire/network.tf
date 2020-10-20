@@ -1,10 +1,11 @@
+#vpc creation
 resource "aws_vpc" "myvpc"{
     cidr_block = var.cidr_block
     tags = {
     Name = "ntier primary"
   }
 }
-#lengthfunction doesn't has squre bracket.
+#subnet creation
 resource "aws_subnet" "mysubnet"{
     vpc_id     = aws_vpc.myvpc.id
     count      = length(var.subnets)
@@ -22,7 +23,7 @@ resource "aws_internet_gateway" "ntire" {
   }
 
   depends_on = [
-     aws_internet_gateway.ntier 
+     aws_subnet.ntier 
   ]
 }
 
