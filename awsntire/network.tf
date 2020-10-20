@@ -21,7 +21,9 @@ resource "aws_internet_gateway" "ntire" {
     Name = "ntiregw"
   }
 
-  depends_on  =  aws_internet_gateway.ntier
+  depends_on = [
+     aws_internet_gateway.ntier 
+  ]
 }
 
 
