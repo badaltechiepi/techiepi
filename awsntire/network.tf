@@ -13,5 +13,15 @@ resource "aws_subnet" "mysubnet"{
     Name = var.subnets[count.index]
   }
 }
+#let's create the internet gateway
+
+resource "aws_internet_gateway" "ntire" {
+  vpc_id     = aws_vpc.myvpc.id
+  tags = {
+    Name = "ntiregw"
+  }
+
+  depends_on  =  aws_internet_gateway.ntier
+}
 
 

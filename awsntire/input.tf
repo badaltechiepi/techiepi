@@ -10,7 +10,7 @@ variable cidr_block {
 }
 variable subnets {
   type        = list(string)
-  default     = ["web", "app", "db", "mgmt"]
+  default     = ["web", "app", "db", "mgmt", "web2", "db2", "mgmt2"]
   description = "address range of primary"
 }
 
