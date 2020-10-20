@@ -60,4 +60,25 @@ resource "aws_route_table_association" "private-associations" {
 }
 
 #let's create the DB
-#we will create the DB in next session
+## Fetch subnet ids for db subnets
+data "aws_subnet_ids" "dbsubnets" {
+    vpc_id          = aws_vpc.myvpc.id
+    filter {
+        name   = "tag:Name"
+        values = local.dbsubnets 
+    }
+}
+
+resource "aws_db_subnet_group" "ntier-db-group" {
+    name            = "ntier"
+    subnet_ids      = data.aws_subnet_ids.dbsubnets.ids
+    tags            = {
+        Name        =  "ntier-db-subnet-group"
+    }
+
+    depends_on  = [
+        aws_subnet.mysubnet,
+        aws_route_table_association.public-associations,
+        aws_route_table_association.private-associations,
+    ]
+}
