@@ -1,0 +1,10 @@
+terraform {
+  backend "s3" {
+            bucket            = "badalbks"
+            key               = "global/ntier/terraform.tfstate"  
+            region            = var.primary_region
+            dynamodb_table    = "qttableforterraformlock"
+  }
+  
+  
+}

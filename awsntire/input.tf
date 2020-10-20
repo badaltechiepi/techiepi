@@ -20,3 +20,12 @@ variable route_table_names{
   description = "creating public and private route table"
 }
 
+variable accosiation{
+  type = map
+  default = {
+
+    public = [0,4,3]
+    private = [1,2,5]
+
+  }
+}
