@@ -29,7 +29,7 @@ resource "aws_internet_gateway" "ntire" {
 #let's create the route table
 
 resource "aws_route_table" "publicroute_table" {
-  vpc_id = aws_vpc.default.id
+  vpc_id = aws_vpc.myvpc.id
   count = length(var.route_table_names)
   route {
     cidr_block = "0.0.0.0/0"
