@@ -44,8 +44,8 @@ resource "aws_route_table" "publicroute_table" {
 #let's create the association between the public and private table
 
 locals {
-  public_subnet = lookup({var.accosiation, "public"})
-  private_subnet = lookup({var.accosiation, "private"})
+  public_subnet = lookup(var.accosiation, "public")
+  private_subnet = lookup(var.accosiation, "private")
 }
 
 resource "aws_route_table_association" "public-associations" {
