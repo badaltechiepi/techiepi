@@ -10,8 +10,13 @@ variable cidr_block {
 }
 variable subnets {
   type        = list(string)
-  default     = ["web", "app", "db", "mgmt", "web2", "db2", "mgmt2"]
+  default     = ["web", "app", "db", "mgmt", "web2", "db2",]
   description = "address range of primary"
 }
 
+variable route_table_names{
+  type = list(string)
+  default = ["public", "private"]
+  description = "creating public and private route table"
+}
 
