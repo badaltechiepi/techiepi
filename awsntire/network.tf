@@ -23,7 +23,7 @@ resource "aws_internet_gateway" "ntire" {
   }
 
   depends_on = [
-     aws_subnet.ntier 
+     aws_subnet.mysubnet 
   ]
 }
 
