@@ -72,6 +72,7 @@ resource "aws_db_subnet_group" "ntier-db-group" {
     }
 
     depends_on  = [
+        aws_vpc.myvpc,
         aws_subnet.mysubnet,
         aws_route_table_association.public-associations,
         aws_route_table_association.private-associations,
