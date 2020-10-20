@@ -43,11 +43,6 @@ resource "aws_route_table" "publicroute_table" {
 
 #let's create the association between the public and private table
 
-locals {
-  public_subnet = lookup(var.accosiation, "public")
-  private_subnet = lookup(var.accosiation, "private")
-}
-
 resource "aws_route_table_association" "public-associations" {
   subnet_id      = aws_subnet.mysubnet[local.public_subnet[count.index]].id
   route_table_id = aws_route_table.publicroute_table[0].id
