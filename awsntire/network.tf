@@ -51,12 +51,12 @@ locals {
 resource "aws_route_table_association" "public-associations" {
   subnet_id      = aws_subnet.mysubnet[local.public_subnet[count.index]].id
   route_table_id = aws_route_table.publicroute_table[0].id
-  count = length(var.public_subnet)
+  count = length(local.public_subnet)
 }
 resource "aws_route_table_association" "private-associations" {
   subnet_id      = aws_subnet.mysubnet[local.private_subnet[count.index]].id
   route_table_id = aws_route_table.publicroute_table[0].id
-  count = length(var.private_subnet)
+  count = length(local.private_subnet)
 }
 
 #let's create the DB
