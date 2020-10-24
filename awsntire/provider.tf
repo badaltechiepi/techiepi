@@ -1,4 +1,5 @@
-#aws provider for ntire architecture.
+#Configure the AWS Provider
+
 provider "aws"{
-    region = var.primary_region
+    region ="us-east-2"
 }
