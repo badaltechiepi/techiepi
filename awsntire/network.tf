@@ -28,10 +28,7 @@ resource "aws_internet_gateway" "igw" {
     Name = "sunbird_igw"
   }
   depends_on  = [
-        aws_subnet.sunbird_subnets_web,
-        aws_subnet.sunbird_subnets_app,
-        aws_subnet.sunbird_subnets_mgmt,
-        aws_subnet.sunbird_subnets_db
+        aws_subnet.sunbird_subnets
     ]
 }
 #The below is created for the routung table
