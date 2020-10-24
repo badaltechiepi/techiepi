@@ -54,7 +54,6 @@ resource "aws_subnet" "sunbird_subnets_db" {
 
 }
 #The below is created the for the IG
-#Public gate way for the web and mgmt
 resource "aws_internet_gateway" "igw" {
   vpc_id = aws_vpc.sunbird_VPC.id
 
@@ -68,5 +67,28 @@ resource "aws_internet_gateway" "igw" {
         aws_subnet.sunbird_subnets_db
     ]
 }
+#The below is created for the routung table
+#creating the routing table for the public
+resource "aws_route_table" "sunbird_route_pubic" {
+  vpc_id = aws_vpc.sunbird_VPC.id
+
+  route {
+    cidr_block = "0.0.0.0/0"
+    gateway_id = aws_internet_gateway.igw.id
+  }
+  tags = {
+    Name = "public"
+  }
+# creating the route table for the private
+resource "aws_route_table" "sunbird_route_private" {
+  vpc_id = aws_vpc.sunbird_VPC.id
+
+  route {
+    cidr_block = "0.0.0.0/0"
+    gateway_id = aws_internet_gateway.igw.id
+  }
+  tags = {
+    Name = "private"
+  }
 
 
