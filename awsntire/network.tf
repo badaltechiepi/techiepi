@@ -79,6 +79,7 @@ resource "aws_route_table" "sunbird_route_pubic" {
   tags = {
     Name = "public"
   }
+}
 # creating the route table for the private
 resource "aws_route_table" "sunbird_route_private" {
   vpc_id = aws_vpc.sunbird_VPC.id
@@ -90,5 +91,6 @@ resource "aws_route_table" "sunbird_route_private" {
   tags = {
     Name = "private"
   }
+}
 
 
