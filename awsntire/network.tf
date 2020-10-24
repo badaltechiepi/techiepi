@@ -8,7 +8,7 @@ resource "aws_vpc" "sunbird_VPC" {
   }
 
 }
-
+#The below are the subent created for the ntire architecture
 # creating the subnet for web
 resource "aws_subnet" "sunbird_subnets_web" {
 
@@ -53,4 +53,23 @@ resource "aws_subnet" "sunbird_subnets_db" {
   }
 
 }
+#The below is created the for the IG
+#Public gate way for the web and mgmt
+resource "aws_internet_gateway" "sunbird_IG_public" {
+  vpc_id = aws_vpc.sunbird_VPC.id
+
+  tags = {
+    Name = "public"
+  }
+}
+#Private gate way for the db and app
+resource "aws_internet_gateway" "sunbird_IG_private" {
+  vpc_id = aws_vpc.sunbird_VPC.id
+
+  tags = {
+    Name = "private"
+  }
+}
+
+
 
