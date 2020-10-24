@@ -93,4 +93,22 @@ resource "aws_route_table" "sunbird_route_private" {
   }
 }
 
-
+#associated public and private route table accrodingly.
+#Public
+resource "aws_route_table_association" "public-association" {
+  subnet_id      = aws_subnet.sunbird_subnets_web
+  route_table_id = aws_route_table.sunbird_route_pubic.id
+}
+resource "aws_route_table_association" "public-association1" {
+  subnet_id      = aws_subnet.sunbird_subnets_mgmt
+  route_table_id = aws_route_table.sunbird_route_pubic.id
+}
+#private
+resource "aws_route_table_association" "private-association" {
+  subnet_id      = aws_subnet.sunbird_subnets_app
+  route_table_id = aws_route_table.sunbird_route_private.id
+}
+resource "aws_route_table_association" "private-association1" {
+  subnet_id      = aws_subnet.sunbird_subnets_db
+  route_table_id = aws_route_table.sunbird_route_private.id
+}
