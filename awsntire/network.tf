@@ -55,21 +55,18 @@ resource "aws_subnet" "sunbird_subnets_db" {
 }
 #The below is created the for the IG
 #Public gate way for the web and mgmt
-resource "aws_internet_gateway" "sunbird_IG_public" {
+resource "aws_internet_gateway" "igw" {
   vpc_id = aws_vpc.sunbird_VPC.id
 
   tags = {
-    Name = "public"
+    Name = "sunbird_igw"
   }
+  depends_on  = [
+        aws_subnet.sunbird_subnets_web,
+        aws_subnet.sunbird_subnets_app,
+        aws_subnet.sunbird_subnets_mgmt,
+        aws_subnet.sunbird_subnets_db
+    ]
 }
-#Private gate way for the db and app
-resource "aws_internet_gateway" "sunbird_IG_private" {
-  vpc_id = aws_vpc.sunbird_VPC.id
-
-  tags = {
-    Name = "private"
-  }
-}
-
 
 
