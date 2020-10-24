@@ -1,4 +1,9 @@
-# techiepi
-1. local : the variable which we are defining inside our template which we can't use out side of the template
-2. lookup: is used along with map to findout the values
-3. Map: 
+1. Creating the ntire architecture
+2. Steps which we are making automated
+  a. Creating the network
+     1. Creating the VPC
+     2. creating the subnets
+     3. Creating the internet gateway
+     4. Creating the routing tables
+     5. Accociated the routing tables with the subnets
+     6. Creating the DB subnets and accociated with the db. 
