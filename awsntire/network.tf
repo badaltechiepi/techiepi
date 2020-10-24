@@ -1,7 +1,7 @@
 #creating  VPC 
 resource "aws_vpc" "sunbird_VPC" {
 
-  cidr_block      = "10.0.0.0/16"
+  cidr_block      = var.sunbird_cidr_block
   tags = {
     
     Name = "sunbird_VPC"
@@ -9,47 +9,14 @@ resource "aws_vpc" "sunbird_VPC" {
 
 }
 #The below are the subent created for the ntire architecture
-# creating the subnet for web
-resource "aws_subnet" "sunbird_subnets_web" {
+# creating the subnets(web,app,db,mgmt)
+resource "aws_subnet" "sunbird_subnets" {
 
   vpc_id     = aws_vpc.sunbird_VPC.id
-  cidr_block = "10.0.0.0/24"
-
+  cidr_block = cidrsubnet(var.sunbird_cidr_block,8,count.index)
+  count = length(var.subnird_subnets)
   tags = {
-    Name = "web"
-  }
-
-}
-#creating the subnet for the app
-resource "aws_subnet" "sunbird_subnets_app" {
-
-  vpc_id     = aws_vpc.sunbird_VPC.id
-  cidr_block = "10.0.1.0/24"
-
-  tags = {
-    Name = "app"
-  }
-
-}
-# creating the subnet for the mgmt
-resource "aws_subnet" "sunbird_subnets_mgmt" {
-
-  vpc_id     = aws_vpc.sunbird_VPC.id
-  cidr_block = "10.0.2.0/24"
-
-  tags = {
-    Name = "mgmt"
-  }
-
-}
-#creating the subnet for the db
-resource "aws_subnet" "sunbird_subnets_db" {
-
-  vpc_id     = aws_vpc.sunbird_VPC.id
-  cidr_block = "10.0.3.0/24"
-
-  tags = {
-    Name = "db"
+    Name = var.subnird_subnets[count.index]
   }
 
 }
