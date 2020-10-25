@@ -28,13 +28,3 @@ variable sunbird_route_table_association{
   }
   description = "associated the subnent with the route table"
 }
-variable sunbird_RDS{
-  type = map
-  default ={
-
-     dbsubnet = [4,5]
-  }
-  description = "db subnets"
-  
-}
-
