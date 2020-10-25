@@ -79,7 +79,7 @@ data "aws_subnet_ids" "dbsubnets" {
   vpc_id = aws_vpc.sunbird_VPC.id
   filter {
     name   = "tag:Name"
-    values = [local.db_subents] # insert values here
+    values = local.dbsubents # insert values here
   }
 }
 #creating the db subenet groups
