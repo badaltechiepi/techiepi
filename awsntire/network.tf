@@ -57,7 +57,7 @@ locals{
 }
 
 resource "aws_route_table_association" "public_association" {
-  subnet_id      = aws_subnet.sunbird_subnets[local.publi_subnet[count.index]].id
+  subnet_id      = aws_subnet.sunbird_subnets[local.public_subnet[count.index]].id
   route_table_id = aws_route_table.sunbird_route_table[0].id
   count = length(local.public_subnet)
 }
