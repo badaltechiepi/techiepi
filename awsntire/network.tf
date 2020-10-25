@@ -85,7 +85,7 @@ data "aws_subnet_ids" "dbsubnets" {
 #creating the db subenet groups
 resource "aws_db_subnet_group" "sunbird-ntier-db-group" {
   name       = "sunbird_ntire"
-  subnet_ids = [data.aws_subnet_ids.dbsubnets.ids]
+  subnet_ids = data.aws_subnet_ids.dbsubnets.ids
 
   tags = {
     Name = "sunbird-ntier-db-subnet-group"
