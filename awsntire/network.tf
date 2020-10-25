@@ -18,6 +18,9 @@ resource "aws_subnet" "sunbird_subnets" {
   tags = {
     Name = var.subnird_subnets[count.index]
   }
+   depends_on  = [
+        aws_vpc.sunbird_VPC
+    ]
 
 }
 #The below is created the for the InternetGateWay
