@@ -10,7 +10,7 @@ variable sunbird_cidr_block {
 }
 variable subnird_subnets {
   type        = list(string)
-  default     = ["web", "app" ,"mgmt",,"web2" ,"db","db2","app2"]
+  default     = ["web", "app" ,"mgmt","web2" ,"db","db2","app2"]
   description = "subents to be created"
 }
 variable sunbird_route_table_names {
