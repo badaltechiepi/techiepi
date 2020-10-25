@@ -10,7 +10,7 @@ variable sunbird_cidr_block {
 }
 variable subnird_subnets {
   type        = list(string)
-  default     = ["web", "app" ,"mgmt", "db"]
+  default     = ["web", "app" ,"mgmt",,"web2" ,"db","db2","app2"]
   description = "subents to be created"
 }
 variable sunbird_route_table_names {
@@ -23,8 +23,8 @@ variable sunbird_route_table_association{
 
   type  = map
   default   ={
-    public  = [0,2],
-    private = [1,3]
+    public  = [0,2,3]
+    private = [1,4,5,6]
   }
   description = "associated the subnent with the route table"
 }
