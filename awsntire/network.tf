@@ -52,18 +52,18 @@ resource "aws_route_table" "sunbird_route_table" {
 
 locals{
 
-  public_subent = lookup(var.sunbird_route_table_association,"public")
-  private_subent = lookup(var.sunbird_route_table_association,"private")
+  public_subnet = lookup(var.sunbird_route_table_association,"public")
+  private_subnet = lookup(var.sunbird_route_table_association,"private")
 }
 
 resource "aws_route_table_association" "public_association" {
   subnet_id      = aws_subnet.sunbird_subnets[local.publi_subnet[count.index]].id
   route_table_id = aws_route_table.sunbird_route_table[0].id
-  count = length(local.public_subent)
+  count = length(local.public_subnet)
 }
 #private(app, app2, db, db2)
 resource "aws_route_table_association" "private_association" {
-  subnet_id      = aws_subnet.sunbird_subnets[local.private_subent[count.index]].id
+  subnet_id      = aws_subnet.sunbird_subnets[local.private_subnet[count.index]].id
   route_table_id = aws_route_table.sunbird_route_table[1].id
-  count = length(local.private_subent)
+  count = length(local.private_subnet)
 }
