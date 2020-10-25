@@ -43,7 +43,7 @@ resource "aws_route_table" "sunbird_route_table" {
     gateway_id = aws_internet_gateway.igw.id
   }
   tags = {
-    Name = var.rout[count.index]
+    Name = var.sunbird_route_table_names[count.index]
   }
 }
 #associated public and private route table accrodingly. to achive this we will using map variable along with lookup function.
