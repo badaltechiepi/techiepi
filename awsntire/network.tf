@@ -63,7 +63,7 @@ resource "aws_route_table_association" "public_association" {
 }
 #private(app, app2, db, db2)
 resource "aws_route_table_association" "private_association" {
-  subnet_id      = aws_subnet.sunbird_subnets[local.private_subnet[count.index]].id
-  route_table_id = aws_route_table.sunbird_route_table[0].id
+  subnet_id      = aws_subnet.sunbird_subnets[local.private_subent[count.index]].id
+  route_table_id = aws_route_table.sunbird_route_table[1].id
   count = length(local.private_subent)
 }
