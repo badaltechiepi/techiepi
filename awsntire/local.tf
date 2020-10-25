@@ -8,5 +8,5 @@ locals{
 
   public_subnet = lookup(var.sunbird_route_table_association,"public")
   private_subnet = lookup(var.sunbird_route_table_association,"private")
-  db_subents   = ["db", "db2"]
+  dbsubents   = ["db", "db2"]
 }
