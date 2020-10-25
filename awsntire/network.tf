@@ -20,59 +20,50 @@ resource "aws_subnet" "sunbird_subnets" {
   }
 
 }
-#The below is created the for the IG
+#The below is created the for the InternetGateWay
 resource "aws_internet_gateway" "igw" {
   vpc_id = aws_vpc.sunbird_VPC.id
 
   tags = {
     Name = "sunbird_igw"
   }
+  #creating this internet getway only after the sunbet got created. don't go parallay. 
+  #Depends on defind the dependency in the template creation.
   depends_on  = [
         aws_subnet.sunbird_subnets
     ]
 }
 #The below is created for the routung table
 #creating the routing table for the public
-resource "aws_route_table" "sunbird_route_pubic" {
+resource "aws_route_table" "sunbird_route_table" {
   vpc_id = aws_vpc.sunbird_VPC.id
-
+  count = length(var.sunbird_route_table_names)
   route {
     cidr_block = "0.0.0.0/0"
     gateway_id = aws_internet_gateway.igw.id
   }
   tags = {
-    Name = "public"
+    Name = var.rout[count.index]
   }
 }
-# creating the route table for the private
-resource "aws_route_table" "sunbird_route_private" {
-  vpc_id = aws_vpc.sunbird_VPC.id
+#associated public and private route table accrodingly. to achive this we will using map variable along with lookup function.
+# to store the value we are using the local(defind variable to store the value locally inside the template) 
+#Public(web,mgmt,web2)
 
-  route {
-    cidr_block = "0.0.0.0/0"
-    gateway_id = aws_internet_gateway.igw.id
-  }
-  tags = {
-    Name = "private"
-  }
+locals{
+
+  public_subent = lookup(var.sunbird_route_table_association,"public")
+  private_subent = lookup(var.sunbird_route_table_association,"private")
 }
 
-#associated public and private route table accrodingly.
-#Public
-resource "aws_route_table_association" "public-association" {
-  subnet_id      = aws_subnet.sunbird_subnets_web.id
-  route_table_id = aws_route_table.sunbird_route_pubic.id
+resource "aws_route_table_association" "public_association" {
+  subnet_id      = aws_subnet.sunbird_subnets[local.publi_subnet[count.index]].id
+  route_table_id = aws_route_table.sunbird_route_table[0].id
+  count = length(local.public_subent)
 }
-resource "aws_route_table_association" "public-association1" {
-  subnet_id      = aws_subnet.sunbird_subnets_mgmt.id
-  route_table_id = aws_route_table.sunbird_route_pubic.id
-}
-#private
-resource "aws_route_table_association" "private-association" {
-  subnet_id      = aws_subnet.sunbird_subnets_app.id
-  route_table_id = aws_route_table.sunbird_route_private.id
-}
-resource "aws_route_table_association" "private-association1" {
-  subnet_id      = aws_subnet.sunbird_subnets_db.id
-  route_table_id = aws_route_table.sunbird_route_private.id
+#private(app, app2, db, db2)
+resource "aws_route_table_association" "private_association" {
+  subnet_id      = aws_subnet.sunbird_subnets[local.private_subnet[count.index]].id
+  route_table_id = aws_route_table.sunbird_route_table[0].id
+  count = length(local.private_subent)
 }

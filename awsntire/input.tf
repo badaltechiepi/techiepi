@@ -13,4 +13,20 @@ variable subnird_subnets {
   default     = ["web", "app" ,"mgmt", "db"]
   description = "subents to be created"
 }
+variable sunbird_route_table_names {
+  type        = list(string)
+  default     = ["public" , "private"]
+  description = "rout table to be create"
+}
+
+variable sunbird_route_table_association{
+
+  type  = map
+  default   ={
+    public  = [0,2],
+    private = [1,3]
+  }
+  description = "associated the subnent with the route table"
+}
+
 
