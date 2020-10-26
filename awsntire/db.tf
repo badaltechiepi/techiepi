@@ -36,3 +36,54 @@ resource "aws_db_subnet_group" "sunbird-ntier-db-group" {
         aws_route_table_association.private_association,
     ]
 }
+
+#Creating the network security group for the inbound and outbound network for the DB
+
+resource "aws_security_group" "rds-sg" {
+  name        = "allow_mysql"
+  description = "Allow mysql inbound traffic"
+  vpc_id      = aws_vpc.sunbird_VPC.id
+
+  ingress {
+      description = "creating the inbound rule for the db"
+      cidr_blocks = ["0.0.0.0/0"]
+      from_port =  3306
+      protocol = "tcp"
+      to_port = 3306
+  }
+  egress {
+      description = "creating the outbound rule for the db"
+      cidr_blocks = ["0.0.0.0/0"]
+      from_port =  0
+      protocol = "tcp"
+      to_port = 65535
+  }  
+  depends_on    = [
+      aws_db_subnet_group.sunbird-ntier-db-group
+  ]
+}
+resource "aws_db_instance" "sunbird_primary_db"{
+    allocated_storage = 20
+    allow_major_version_upgrade = false
+    auto_minor_version_upgrade = true
+    availability_zone = "us-east-2"
+    db_subnet_group_name = "sunbird_ntire"
+    engine = "mysql"
+    engine_version = "8.0.20"
+    identifier = "lt-ntier-primary"
+    instance_class = "db.t2.micro"
+    max_allocated_storage = 0
+    multi_az = false
+    name = "sunbird_lthrms"
+    password = "rootroot"
+    username = "sunbird"
+    publicly_accessible = false
+    vpc_security_group_ids = [aws_security_group.rds-sg.id]
+    
+    depends_on  =[
+        aws_security_group.rds-sg,
+        aws_db_subnet_group.sunbird-ntier-db-group
+
+    ]
+
+    }
