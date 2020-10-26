@@ -7,14 +7,14 @@ resource "aws_security_group" "app-sg" {
 
   ingress {
       description = "creating the inbound rule for the app"
-      cidr_blocks = local.cidr_block
+      cidr_blocks = [ local.cidr_block ]
       from_port =  local.ingress_from_app_port
       protocol = local.proto
       to_port = local.ingress_to_app_port
   }
   ingress {
       description = "accessing the instance via 22 port"
-      cidr_blocks = local.cidr_block
+      cidr_blocks = [ local.cidr_block ]
       from_port =  local.ingress_ssh_port
       protocol = "tcp"
       to_port = local.ingress_ssh_port
@@ -23,7 +23,7 @@ resource "aws_security_group" "app-sg" {
 
   egress {
       description = "creating the outbound rule for the app"
-      cidr_blocks = local.cidr_block
+      cidr_blocks = [ local.cidr_block ]
       from_port =  local.egress_from_port
       protocol = "tcp"
       to_port = local.egress_to_port
