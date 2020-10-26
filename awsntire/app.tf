@@ -37,7 +37,7 @@ resource "aws_instance" "app-server" {
     ami           = "ami-0e82959d4ed12de3f"
     instance_type = "t2.micro"
     key_name   = "terraform"
-    vpc_security_group_ids = aws_security_group.app-sg.ids
+    vpc_security_group_ids = aws_security_group.app-sg.id
     associate_public_ip_address = true
     subnet_id  = aws_subnet.sunbird_subnets[1].id
     tags    ={
