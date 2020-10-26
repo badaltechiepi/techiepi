@@ -39,7 +39,7 @@ resource "aws_instance" "app-server" {
     key_name                    = var.key_name
     vpc_security_group_ids      = [aws_security_group.app-sg.id]
     associate_public_ip_address = true
-    subnet_id                   = aws_subnet.sunbird_subnets[1].id
+    subnet_id                   = aws_subnet.sunbird_subnets[local.primary_app_subnet_id].id
     tags                        ={
     Name                        = var.instance_name
     }

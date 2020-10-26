@@ -23,5 +23,7 @@ locals{
   engine = "mysql"
   password = "rootroot"
   username = "sunbird"
+  primary_app_subnet_id = 1
+  secondary_app_sunet_id = 6
 
 }
