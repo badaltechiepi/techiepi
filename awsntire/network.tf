@@ -61,3 +61,28 @@ resource "aws_route_table_association" "private_association" {
   route_table_id = aws_route_table.sunbird_route_table[1].id
   count = length(local.private_subnet)
 }
+
+/* #Creating the RDS and associated the db subnets with the group table. 
+
+resource "aws_db_subnet_group" "ntier-db-group" {
+  name       = "ntire"
+  count = length(local.db_subents)
+  subnet_ids = [aws_subnet.sunbird_subnets[local.db_subents[count.index]].id]
+  tags = {
+    Name = "My DB subnet group"
+  }
+  depends_on  = [
+        aws_subnet.sunbird_subnets,
+        aws_route_table_association.public_association,
+        aws_route_table_association.private_association,
+    ]
+} */
+
+#fetch the subnetID from  the subents
+data "aws_subnet_ids" "dbsubnets" {
+  vpc_id = aws_vpc.sunbird_VPC.id
+  filter {
+    name   = "tag:Name"
+    values = local.dbsubents # insert values here
+  }
+}

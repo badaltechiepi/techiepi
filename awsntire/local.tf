@@ -9,4 +9,16 @@ locals{
   public_subnet = lookup(var.sunbird_route_table_association,"public")
   private_subnet = lookup(var.sunbird_route_table_association,"private")
   dbsubents   = ["db", "db2"]
+  cidr_block = "0.0.0.0/0"
+  ingress_from_db_port = 3306
+  ingress_to_db_port = 3306
+  egress_from_port = 0
+  egress_to_port = 65535
+  proto = "tcp"
+  allocated_storage = 20
+  db_subnet_group_name = sunbird_ntire
+  engine = "mysql"
+  password = "rootroot"
+  username = "sunbird"
+
 }

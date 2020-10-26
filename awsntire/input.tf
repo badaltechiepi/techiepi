@@ -32,3 +32,37 @@ variable sunbird_route_table_association{
   }
   description = "associated the subnent with the route table"
 }
+variable db_subnet_name {
+  type        = string
+  default     = "allow_mysql"
+  description = "db_subnet_name"
+}
+variable engine_version {
+  type        = string
+  default     = "8.0.20"
+  description = "description"
+}
+variable identifier {
+  type        = string
+  default     = "lt-ntier-primary"
+  description = "description"
+}
+variable instance_class {
+  type        = string
+  default     = "db.t2.micro"
+  description = "description"
+}
+variable multi_az {
+  type        = bool
+  default     = false
+  description = "description"
+}
+variable Name {
+  type        = string
+  default     = "sunbird_lthrms"
+  description = "description"
+}
+
+
+
+
