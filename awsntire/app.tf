@@ -87,7 +87,7 @@ resource "aws_instance" "app-server" {
     provisioner "remote-exec" {
         inline                  = [
             "sudo apt update",
-            "sudo apt-get install openjdk-8-jdk -y"
+            "sudo apt-get install openjdk-8-jdk -y",
             "sudo apt install tomcat8 tomcat8-admin tomcat8-common tomcat8-docs tomcat8-examples -y",
             "cd /var/lib/tomcat8/webapps",
             "sudo wget https://referenceappkhaja.s3-us-west-2.amazonaws.com/gameoflife.war"
