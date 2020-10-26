@@ -45,7 +45,7 @@ resource "aws_security_group" "rds-sg" {
 
   ingress {
       description = "creating the inbound rule for the db"
-      cidr_blocks = "0.0.0.0/0"
+      cidr_blocks = ["0.0.0.0/0"]
       from_port =  3306
       protocol = "tcp"
       to_port = 3306
