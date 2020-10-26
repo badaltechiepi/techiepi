@@ -66,7 +66,7 @@ resource "aws_db_instance" "sunbird_primary_db"{
     allow_major_version_upgrade = false
     auto_minor_version_upgrade = true
     availability_zone = "us-east-2"
-    db_subnet_group_name = aws_db_subnet_group.sunbird-ntier-db-group
+    db_subnet_group_name = "ntire"
     engine = "mysql"
     engine_version = "8.0.20"
     identifier = "lt-ntier-primary"
@@ -77,7 +77,7 @@ resource "aws_db_instance" "sunbird_primary_db"{
     password = "rootroot"
     username = "sunbird"
     publicly_accessible = false
-    vpc_security_group_ids = [aws_security_group.rds-sg]
+    vpc_security_group_ids = ["aws_security_group.rds-sg"]
     
     depends_on  =[
         aws_db_subnet_group.sunbird-ntier-db-group,
