@@ -34,20 +34,20 @@ resource "aws_security_group" "app-sg" {
 }
 
 resource "aws_instance" "app-server" {
-    ami           = var.ec2_ami
-    instance_type = var.instance_type
-    key_name   = var.key_name
-    vpc_security_group_ids = [aws_security_group.app-sg.id]
+    ami                         = var.ec2_ami
+    instance_type               = var.instance_type
+    key_name                    = var.key_name
+    vpc_security_group_ids      = [aws_security_group.app-sg.id]
     associate_public_ip_address = true
-    subnet_id  = aws_subnet.sunbird_subnets[1].id
-    tags    ={
-        Name = var.instance_name
+    subnet_id                   = aws_subnet.sunbird_subnets[1].id
+    tags                        ={
+    Name                        = var.instance_name
     }
-    connection {
-    type     = "ssh"
-    user     = "ubuntu"
-    host     = self.public_ip
-    private_key = file("./terraform.pem")
+    connection                  {
+    type                        = "ssh"
+    user                        = "ubuntu"
+    host                        = self.public_ip
+    private_key                 = file("./terraform.pem")
 
 
     provisioner "remote-exec" {
@@ -59,6 +59,6 @@ resource "aws_instance" "app-server" {
     ]
   }
 }
-
+}
 
 
