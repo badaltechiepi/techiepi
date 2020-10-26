@@ -94,4 +94,8 @@ data "aws_subnet_ids" "dbsubnets" {
     name   = "tag:Name"
     values = local.dbsubents # insert values here
   }
+  depends_on  = [
+        aws_vpc.sunbird_VPC,
+        aws_subnet.sunbird_subnets
+    ]
 }
