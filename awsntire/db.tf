@@ -66,7 +66,6 @@ resource "aws_db_instance" "sunbird_primary_db"{
     allocated_storage = 20
     allow_major_version_upgrade = false
     auto_minor_version_upgrade = true
-    availability_zone = "us-east-2"
     db_subnet_group_name = "sunbird_ntire"
     engine = "mysql"
     engine_version = "8.0.20"
