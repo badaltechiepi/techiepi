@@ -32,11 +32,19 @@ variable sunbird_route_table_association{
   }
   description = "associated the subnent with the route table"
 }
+#DB subnet name
 variable db_subnet_name {
   type        = string
   default     = "allow_mysql"
   description = "db_subnet_name"
 }
+#App subnet name
+variable app_subnet_name {
+  type        = string
+  default     = "allow_app"
+  description = "app_subnet_name"
+}
+
 variable engine_version {
   type        = string
   default     = "8.0.20"
@@ -62,6 +70,30 @@ variable Name {
   default     = "sunbird_lthrms"
   description = "description"
 }
+variable ec2_ami {
+  type        = string
+  default     = "ami-0e82959d4ed12de3f"
+  description = "EC2 AMI"
+}
+variable instance_type {
+  type        = string
+  default     = "t2.micro"
+  description = "instance type"
+}
+variable key_name {
+  type        = string
+  default     = "terraform"
+  description = "key name "
+}
+variable instance_name {
+  type        = string
+  default     = "tomcat-app-server"
+  description = "instance name"
+}
+
+
+
+
 
 
 

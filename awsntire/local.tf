@@ -12,6 +12,9 @@ locals{
   cidr_block = "0.0.0.0/0"
   ingress_from_db_port = 3306
   ingress_to_db_port = 3306
+  ingress_from_app_port = 8080
+  ingress_to_app_port = 8080
+  ingress_ssh_port = 22
   egress_from_port = 0
   egress_to_port = 65535
   proto = "tcp"
