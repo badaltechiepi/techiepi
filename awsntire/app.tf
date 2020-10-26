@@ -43,14 +43,14 @@ resource "aws_instance" "app-server" {
     tags                        ={
     Name                        = var.instance_name
     }
+
     connection                  {
     type                        = "ssh"
     user                        = "ubuntu"
     host                        = self.public_ip
-    private_key                 = file("./terraform.pem")
-    
+   private_key                  = file("./terraform.pem")
     }
-    
+
     provisioner "remote-exec" {
     inline = [
             "sudo apt update",
