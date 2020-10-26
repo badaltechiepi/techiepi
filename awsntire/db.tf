@@ -69,7 +69,7 @@ resource "aws_db_instance" "sunbird_primary_db"{
     db_subnet_group_name = "sunbird_ntire"
     engine = "mysql"
     engine_version = "8.0.20"
-    identifier = "lt-ntier-primary"
+    identifier = "sunbird-lt-ntier-primary"
     instance_class = "db.t2.micro"
     max_allocated_storage = 0
     multi_az = false
@@ -85,4 +85,4 @@ resource "aws_db_instance" "sunbird_primary_db"{
 
     ]
 
-    }
+    }  
