@@ -33,6 +33,7 @@ resource "aws_internet_gateway" "igw" {
   #creating this internet getway only after the sunbet got created. don't go parallay. 
   #Depends on defind the dependency in the template creation.
   depends_on  = [
+        aws_vpc.sunbird_VPC,
         aws_subnet.sunbird_subnets
     ]
 }
@@ -54,12 +55,20 @@ resource "aws_route_table_association" "public_association" {
   subnet_id      = aws_subnet.sunbird_subnets[local.public_subnet[count.index]].id
   route_table_id = aws_route_table.sunbird_route_table[0].id
   count = length(local.public_subnet)
+  depends_on  = [
+        aws_vpc.sunbird_VPC,
+        aws_subnet.sunbird_subnets
+    ]
 }
 #private(app, app2, db, db2)
 resource "aws_route_table_association" "private_association" {
   subnet_id      = aws_subnet.sunbird_subnets[local.private_subnet[count.index]].id
   route_table_id = aws_route_table.sunbird_route_table[1].id
   count = length(local.private_subnet)
+  depends_on  = [
+        aws_vpc.sunbird_VPC,
+        aws_subnet.sunbird_subnets
+    ]
 }
 
 /* #Creating the RDS and associated the db subnets with the group table. 
