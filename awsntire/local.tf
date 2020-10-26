@@ -16,7 +16,7 @@ locals{
   egress_to_port = 65535
   proto = "tcp"
   allocated_storage = 20
-  db_subnet_group_name = sunbird_ntire
+  db_subnet_group_name = "sunbird_ntire"
   engine = "mysql"
   password = "rootroot"
   username = "sunbird"

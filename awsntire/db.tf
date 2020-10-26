@@ -22,14 +22,14 @@ resource "aws_security_group" "rds-sg" {
 
   ingress {
       description = "creating the inbound rule for the db"
-      cidr_blocks = local.cidr_block
+      cidr_blocks = [ local.cidr_block ]
       from_port =  local.ingress_from_db_port
       protocol = local.proto
       to_port = local.ingress_to_db_port
   }
   egress {
       description = "creating the outbound rule for the db"
-      cidr_blocks = local.cidr_block
+      cidr_blocks = [ local.cidr_block ]
       from_port =  local.egress_from_port
       protocol = local.proto
       to_port = local.egress_to_port
