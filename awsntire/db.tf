@@ -80,7 +80,7 @@ resource "aws_db_instance" "sunbird_primary_db"{
     vpc_security_group_ids = [aws_security_group.rds-sg]
     
     depends_on  =[
-        aws_db_subnet_group.sunbird-ntier-db-group
+        aws_db_subnet_group.sunbird-ntier-db-group,
         aws_security_group.rds-sg
     ]
 
