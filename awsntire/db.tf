@@ -78,6 +78,7 @@ resource "aws_db_instance" "sunbird_primary_db"{
     username = "sunbird"
     publicly_accessible = false
     vpc_security_group_ids = [aws_security_group.rds-sg.id]
+    skip_final_snapshot = true
     
     depends_on  =[
         aws_security_group.rds-sg,
