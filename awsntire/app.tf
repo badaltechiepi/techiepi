@@ -33,7 +33,7 @@ resource "aws_security_group" "app-sg" {
   ]
 }
 
-/* resource "aws_instance" "app-server" {
+resource "aws_instance" "app-server" {
     ami                         = var.ec2_ami
     instance_type               = var.instance_type
     key_name                    = var.key_name
@@ -45,24 +45,25 @@ resource "aws_security_group" "app-sg" {
     }
 
     connection                  {
-    type                        = "ssh"
-    user                        = "ubuntu"
-    host                        = self.public_ip
-   private_key                  = file("./terraform.pem")
+        type                        = "ssh"
+        user                        = "ubuntu"
+        host                        = self.public_ip
+        private_key                  = file("./terraform.pem")
     }
 
     provisioner "remote-exec" {
-    inline = [
-            "sudo apt update",
-            "sudo apt install tomcat8 tomcat8-admin tomcat8-common tomcat8-docs tomcat8-examples -y",
+        inline = [
+            "sudo apt-get update",
+            "sudo apt install openjdk-8-jdk -y",
+            "sudo apt-get install tomcat8 tomcat8-admin tomcat8-common tomcat8-docs -y",
             "cd /var/lib/tomcat8/webapps",
             "sudo wget https://referenceappkhaja.s3-us-west-2.amazonaws.com/gameoflife.war"
-    ]
+        ]
   }
 }
- */
+ 
 
- ## appserver
+ /* ## appserver
 
 resource "aws_instance" "app-server" {
     # needs to be changed
@@ -97,5 +98,5 @@ resource "aws_instance" "app-server" {
 
 }
 
-
+ */
 
