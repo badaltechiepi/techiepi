@@ -1,2 +1,3 @@
 FROM hello-world
-CMD ["echo","hello-world image created"]
+LABEL author="badal"
+LABEL org="techipi"
